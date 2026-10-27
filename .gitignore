@@ -1,0 +1,4 @@
+# capturas de revisión y previews (no forman parte del sitio)
+*.png
+foto_am_preview.jpg
+.DS_Store

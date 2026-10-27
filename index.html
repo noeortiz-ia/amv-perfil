@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alejandro Mendoza Victorica — Estrategia de datos, automatización e inteligencia artificial</title>
+<meta name="description" content="Alejandro Mendoza Victorica. Más de 19 años dirigiendo operaciones comerciales y tecnológicas en América Latina: inteligencia de negocio, analítica, automatización e inteligencia artificial aplicada.">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bone:#f6f3ed; --bone-2:#eeeae1; --bone-3:#e4ddcf;
+    --ink:#12100c; --ink-2:#544e44; --ink-3:#8a8375;
+    --line:#ddd6c8; --accent:#0f4c46; --accent-d:#0a3631; --accent-2:#7ea79f; --accent-soft:#e3ece8;
+    --serif:"Satoshi",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+    --sans:"General Sans",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+    --ease:cubic-bezier(.2,.8,.2,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.66;
+       -webkit-font-smoothing:antialiased;overflow-x:hidden}
+  ::selection{background:var(--accent);color:var(--bone)}
+  a{color:inherit}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 44px;position:relative}
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:700;letter-spacing:-.032em;line-height:1.02}
+  .eyebrow{display:inline-flex;align-items:center;gap:13px;font-size:11px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--accent);font-weight:600}
+  .eyebrow i{display:block;width:38px;height:1px;background:var(--accent);transform-origin:0 50%}
+
+  .grain{position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.045;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .progress{position:fixed;top:0;left:0;height:2px;width:100%;background:var(--accent);z-index:70;
+    transform:scaleX(0);transform-origin:0 50%}
+
+  header{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .45s,border-color .45s;
+         border-bottom:1px solid transparent}
+  header.solid{background:rgba(246,243,237,.88);backdrop-filter:blur(16px) saturate(1.25);border-bottom-color:var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:82px}
+  .brand{font-family:var(--serif);font-weight:900;font-size:14.5px;letter-spacing:.17em;text-transform:uppercase;
+         display:flex;align-items:baseline;gap:7px}
+  .brand span{color:var(--accent)}
+  .brand .dot{width:5px;height:5px;border-radius:50%;background:var(--accent);display:block;transform:translateY(-3px)}
+  .nav ul{display:flex;gap:34px;list-style:none}
+  .nav a{font-size:13px;color:var(--ink-2);text-decoration:none;position:relative;padding-bottom:4px;transition:color .3s}
+  .nav a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--accent);transition:width .38s var(--ease)}
+  .nav a:hover{color:var(--ink)} .nav a:hover::after{width:100%}
+
+  /* índice lateral */
+  .side-index{position:fixed;right:28px;top:50%;transform:translateY(-50%);z-index:45;
+    display:flex;flex-direction:column;gap:15px;align-items:flex-end}
+  .side-index button{background:none;border:0;cursor:pointer;display:flex;align-items:center;gap:10px;padding:0;
+    font-family:var(--sans);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);
+    opacity:.55;transition:opacity .35s,color .35s}
+  .side-index button i{display:block;width:15px;height:1px;background:currentColor;transition:width .4s var(--ease)}
+  .side-index button.on{opacity:1;color:var(--accent)}
+  .side-index button.on i{width:30px}
+  .side-index button b{font-weight:600;opacity:0;transition:opacity .35s}
+  .side-index button.on b{opacity:1}
+
+  .hero{min-height:100svh;display:flex;align-items:center;padding:132px 0 96px;position:relative;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;pointer-events:none}
+  .hero-bg::before{content:"";position:absolute;width:min(72vw,940px);aspect-ratio:1;border-radius:50%;
+    background:radial-gradient(circle at 50% 50%,rgba(15,76,70,.12),rgba(15,76,70,0) 62%);top:-20%;right:-13%}
+  .hero-bg::after{content:"";position:absolute;inset:0;
+    background-image:linear-gradient(to right,rgba(20,18,14,.055) 1px,transparent 1px);
+    background-size:calc(100% / 6) 100%;opacity:.65;
+    -webkit-mask-image:linear-gradient(to bottom,transparent,#000 22%,#000 64%,transparent);
+    mask-image:linear-gradient(to bottom,transparent,#000 22%,#000 64%,transparent)}
+  .spot{position:absolute;width:560px;height:560px;border-radius:50%;pointer-events:none;left:0;top:0;
+    background:radial-gradient(circle,rgba(15,76,70,.11),rgba(15,76,70,0) 68%);
+    transform:translate(-50%,-50%);opacity:0;transition:opacity .7s}
+  .hero-grid{display:grid;grid-template-columns:1fr 312px;gap:84px;align-items:center;width:100%}
+  h1{font-size:clamp(46px,7.2vw,104px);font-weight:900;margin:30px 0 32px;letter-spacing:-.045em}
+  h1 .ln{display:block;overflow:hidden;padding-bottom:.05em}
+  h1 .ln > span{display:block}
+  h1 .ln:nth-child(2) > span{color:var(--accent)}
+  .lead{font-size:19px;line-height:1.66;color:var(--ink-2);max-width:46ch}
+  .lead b{color:var(--ink);font-weight:600}
+  .actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:46px}
+  .btn{display:inline-flex;align-items:center;gap:11px;padding:17px 28px;font-size:12.5px;font-weight:600;
+    letter-spacing:.05em;text-transform:uppercase;text-decoration:none;border-radius:1px;position:relative;
+    overflow:hidden;transition:color .35s}
+  .btn span{position:relative;z-index:1}
+  .btn-solid{background:var(--accent);color:#fff}
+  .btn-solid::before{content:"";position:absolute;inset:0;background:var(--accent-d);transform:translateY(101%);
+    transition:transform .48s var(--ease)}
+  .btn-solid:hover::before{transform:translateY(0)}
+  .btn-ghost{border:1px solid rgba(20,18,14,.3);color:var(--ink)}
+  .btn-ghost::before{content:"";position:absolute;inset:0;background:var(--ink);transform:translateY(101%);
+    transition:transform .48s var(--ease)}
+  .btn-ghost:hover{color:var(--bone)} .btn-ghost:hover::before{transform:translateY(0)}
+  .btn .ar{transition:transform .4s} .btn:hover .ar{transform:translateX(4px)}
+
+  .portrait-wrap{position:relative}
+  .portrait{aspect-ratio:4/5;background:var(--bone-2);
+    overflow:hidden;position:relative;display:grid;place-items:center;border:1px solid var(--line);
+    padding:12px 12px 15px;transform-style:preserve-3d;
+    box-shadow:0 22px 46px -28px rgba(20,18,14,.42), 0 2px 6px -3px rgba(20,18,14,.16)}
+  .portrait img{width:100%;height:100%;object-fit:cover;display:block}
+  .portrait::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(to top,rgba(15,76,70,.16),transparent 58%)}
+  .mono{font-family:var(--serif);font-weight:900;font-size:clamp(84px,9.6vw,132px);color:var(--accent);
+    letter-spacing:-.06em;opacity:.34;line-height:1;position:relative;z-index:1}
+  .mono-pattern{position:absolute;inset:0;pointer-events:none;opacity:.45;
+    background-image:radial-gradient(rgba(15,76,70,.22) 1px,transparent 1px);background-size:17px 17px;
+    -webkit-mask-image:radial-gradient(circle at 50% 45%,#000,transparent 72%);
+    mask-image:radial-gradient(circle at 50% 45%,#000,transparent 72%)}
+  .portrait .frame{position:absolute;inset:5px;border:1px solid rgba(15,76,70,.22);pointer-events:none}
+  .portrait .corner{position:absolute;width:15px;height:15px;border:1px solid var(--accent);opacity:.45}
+  .portrait .corner.tl{top:17px;left:17px;border-right:0;border-bottom:0}
+  .portrait .corner.br{bottom:20px;right:17px;border-left:0;border-top:0}
+  .portrait-meta{display:flex;justify-content:space-between;align-items:baseline;margin-top:15px;gap:12px;
+    font-size:10px;letter-spacing:.17em;text-transform:uppercase;color:var(--ink-2)}
+  .portrait-meta b{color:var(--accent);font-weight:600}
+  .scroll-cue{position:absolute;left:44px;bottom:36px;display:flex;align-items:center;gap:13px;
+    font-size:10px;letter-spacing:.19em;text-transform:uppercase;color:var(--ink-3)}
+  .scroll-cue .bar{width:1px;height:46px;background:var(--line);position:relative;overflow:hidden}
+  .scroll-cue .bar::after{content:"";position:absolute;top:-46px;left:0;width:1px;height:46px;background:var(--accent);
+    animation:drop 2.2s cubic-bezier(.6,0,.3,1) infinite}
+  @keyframes drop{0%{top:-46px}55%{top:0}100%{top:46px}}
+
+  .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;
+    background:var(--bone-2);padding:19px 0;position:relative;z-index:2}
+  .mq-track{display:flex;width:max-content;animation:slide 42s linear infinite}
+  .marquee:hover .mq-track{animation-play-state:paused}
+  .mq-track div{display:flex;align-items:center;gap:28px;padding-right:28px;white-space:nowrap;
+    font-family:var(--serif);font-weight:700;font-size:14px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-2)}
+  .mq-track i{width:4px;height:4px;border-radius:50%;background:var(--accent);display:block;flex:none}
+  @keyframes slide{to{transform:translateX(-50%)}}
+
+  section{padding:116px 0;border-bottom:1px solid var(--line);position:relative}
+  .sec-head{display:grid;grid-template-columns:104px 1fr;gap:46px;margin-bottom:64px;align-items:baseline}
+  .num{font-family:var(--serif);font-size:12px;font-weight:700;letter-spacing:.15em;color:var(--accent)}
+  h2{font-size:clamp(32px,4.4vw,58px)}
+  .sec-sub{margin-top:18px;color:var(--ink-2);font-size:17px;max-width:54ch}
+  .body-grid{display:grid;grid-template-columns:104px 1fr;gap:46px}
+  .prose{max-width:64ch}
+  .prose p{margin-bottom:24px;color:var(--ink-2);font-size:17.5px}
+  .prose p:last-child{margin-bottom:0}
+  .prose b{color:var(--ink);font-weight:600}
+
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:72px;border-top:1px solid var(--line)}
+  .stat{padding:32px 30px 28px 0;border-right:1px solid var(--line)}
+  .stat:last-child{border-right:0;padding-right:0}
+  .stat:nth-child(2),.stat:nth-child(3){padding-left:30px}
+  .stat .n{display:block;font-family:var(--serif);font-weight:900;font-size:clamp(40px,4.8vw,60px);
+    letter-spacing:-.04em;color:var(--accent);line-height:1}
+  .stat .l{display:block;margin-top:12px;font-size:10.5px;letter-spacing:.17em;text-transform:uppercase;color:var(--ink-2)}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+  .card{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:38px 32px 42px;
+    position:relative;transition:background .45s;overflow:hidden}
+  .card:hover{background:var(--bone-2)}
+  .card .k{display:block;font-family:var(--serif);font-size:11px;letter-spacing:.16em;color:var(--accent);
+    font-weight:700;margin-bottom:24px}
+  .card h3{font-size:20px;margin-bottom:13px;letter-spacing:-.02em}
+  .card p{font-size:14.4px;line-height:1.62;color:var(--ink-2)}
+  .card .bar{position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--accent);transition:width .55s var(--ease)}
+  .card:hover .bar{width:100%}
+
+  .method{background:var(--bone-2)}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(20,18,14,.18)}
+  .step{padding:36px 28px 42px 0;border-right:1px solid rgba(20,18,14,.13);position:relative}
+  .step:last-child{border-right:0}
+  .step:not(:first-child){padding-left:28px}
+  .step .sn{font-family:var(--serif);font-weight:900;font-size:12.5px;letter-spacing:.1em;color:var(--accent);
+    display:block;margin-bottom:20px}
+  .step h3{font-size:19px;margin-bottom:11px}
+  .step p{font-size:14.2px;line-height:1.6;color:var(--ink-2)}
+  .step .dot{position:absolute;top:-4.5px;left:0;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+
+  .quote{padding:104px 0;border-bottom:1px solid var(--line)}
+  .quote blockquote{font-family:var(--serif);font-weight:700;font-size:clamp(25px,3.4vw,42px);line-height:1.24;
+    letter-spacing:-.03em;max-width:24ch}
+  .quote blockquote em{font-style:normal;color:var(--accent)}
+  .quote .attr{margin-top:28px;font-size:10.5px;letter-spacing:.19em;text-transform:uppercase;color:var(--ink-3)}
+
+  .tl{position:relative}
+  .tl-line{position:absolute;left:0;top:9px;bottom:0;width:1px;background:var(--line)}
+  .tl-line::after{content:"";position:absolute;left:0;top:0;width:1px;height:0;background:var(--accent)}
+  .row{display:grid;grid-template-columns:186px 1fr;gap:42px;padding:0 0 44px 34px;position:relative}
+  .row:last-child{padding-bottom:0}
+  .row::before{content:"";position:absolute;left:-4px;top:8px;width:9px;height:9px;border-radius:50%;
+    background:var(--bone);border:1px solid var(--accent);transition:background .3s,transform .3s}
+  .row:hover::before{background:var(--accent);transform:scale(1.25)}
+  .row .yr{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-3);padding-top:4px}
+  .row h3{font-size:19.5px;margin-bottom:9px}
+  .row p{font-size:15.2px;line-height:1.62;color:var(--ink-2);max-width:58ch}
+  .geo{display:flex;gap:10px;flex-wrap:wrap;margin-top:52px;padding-left:34px}
+  .tag{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;padding:9px 16px;border:1px solid var(--line);
+    color:var(--ink-2);border-radius:1px;transition:.3s;cursor:default}
+  .tag:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+  .contact{background:var(--ink);border-bottom:0;color:var(--bone);overflow:hidden}
+  .contact::before{content:"";position:absolute;width:min(80vw,900px);aspect-ratio:1;border-radius:50%;
+    background:radial-gradient(circle,rgba(126,167,159,.16),transparent 62%);right:-22%;top:-32%}
+  .contact .num{color:var(--accent-2)}
+  .contact h2{color:var(--bone);font-size:clamp(40px,6.6vw,88px)}
+  .contact .prose p{color:#c6c0b2;font-size:18px}
+  .contact .btn-solid{background:var(--accent-2);color:#0b2b28;margin-top:38px}
+  .contact .btn-solid::before{background:#fff}
+  footer{background:var(--ink);color:#8b8578;padding:0 0 44px;font-size:11.5px}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;
+    border-top:1px solid rgba(246,243,237,.13);padding-top:26px;letter-spacing:.06em}
+
+  .rv{opacity:0;transform:translateY(24px)}
+
+  @media (max-width:1100px){
+    .side-index{display:none}
+    .hero-grid{grid-template-columns:1fr 330px;gap:54px}
+  }
+  @media (max-width:900px){
+    .wrap{padding:0 26px}
+    .hero-grid{grid-template-columns:1fr;gap:46px}
+    .portrait-wrap{max-width:300px}
+    .scroll-cue{display:none}
+    .stats{grid-template-columns:1fr}
+    .stat{border-right:0;border-bottom:1px solid var(--line);padding:24px 0}
+    .stat:nth-child(2),.stat:nth-child(3){padding-left:0}
+    .cards{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr}
+    .step{border-right:0;border-bottom:1px solid rgba(20,18,14,.13);padding:28px 0}
+    .step:not(:first-child){padding-left:0}
+    .sec-head,.body-grid{grid-template-columns:1fr;gap:16px}
+    .hero{padding-top:108px}
+    section{padding:78px 0}
+    .nav ul{display:none}
+    .row{grid-template-columns:1fr;gap:9px;padding-left:26px}
+    .geo{padding-left:26px}
+    .quote{padding:76px 0}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}
+    .rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="progress" id="prog"></div>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <div class="brand">Alejandro <span>Mendoza</span> <span class="dot"></span> V.</div>
+    <nav><ul>
+      <li><a href="#perfil">Perfil</a></li>
+      <li><a href="#especialidades">Especialidades</a></li>
+      <li><a href="#metodo">Método</a></li>
+      <li><a href="#trayectoria">Trayectoria</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul></nav>
+  </div>
+</header>
+
+<aside class="side-index" id="sideIndex" aria-hidden="true"></aside>
+
+<div class="hero" id="hero">
+  <div class="hero-bg"><div class="spot" id="spot"></div></div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow" id="eyebrow"><i></i>Estrategia de datos · Automatización · IA</span>
+      <h1 id="title">
+        <span class="ln"><span>Alejandro</span></span>
+        <span class="ln"><span>Mendoza</span></span>
+        <span class="ln"><span>Victorica</span></span>
+      </h1>
+      <p class="lead" id="lead">Más de <b>19 años</b> dirigiendo operaciones comerciales y tecnológicas en América Latina. Trabajo en la intersección entre <b>datos, automatización e inteligencia artificial aplicada</b>: convertir lo que una empresa quiere lograr en una ruta que se puede ejecutar y sostener.</p>
+      <div class="actions" id="actions">
+        <a class="btn btn-solid" href="#contacto"><span>Hablemos</span><span class="ar">→</span></a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/alejandro-mendoza-victorica-6a703213a/" target="_blank" rel="noopener"><span>LinkedIn</span><span class="ar">↗</span></a>
+      </div>
+    </div>
+    <div class="portrait-wrap" id="pw">
+      <figure class="portrait" id="portrait">
+        <img src="alejandro-mendoza.webp" alt="Alejandro Mendoza Victorica" width="372" height="466" loading="eager" decoding="async">
+        <span class="frame"></span>
+        <span class="corner tl"></span><span class="corner br"></span>
+      </figure>
+      <div class="portrait-meta"><span>Ciudad de México</span><b>México · Colombia · Perú</b></div>
+    </div>
+  </div>
+  <div class="scroll-cue"><span class="bar"></span>Desliza</div>
+</div>
+
+<div class="marquee">
+  <div class="mq-track">
+    <div>Estrategia de datos<i></i>Analítica avanzada<i></i>Automatización<i></i>Inteligencia artificial aplicada<i></i>Dirección comercial<i></i>Operación y servicio<i></i></div>
+    <div>Estrategia de datos<i></i>Analítica avanzada<i></i>Automatización<i></i>Inteligencia artificial aplicada<i></i>Dirección comercial<i></i>Operación y servicio<i></i></div>
+  </div>
+</div>
+
+<section id="perfil" data-label="Perfil">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">01</span><h2>Perfil</h2></div>
+    <div class="body-grid">
+      <div></div>
+      <div class="prose rv">
+        <p>Casi dos décadas construyendo y dirigiendo operaciones comerciales y tecnológicas en América Latina. Empecé en venta de soluciones de analítica cuando la conversación todavía era sobre reportes, y desde entonces he acompañado el recorrido completo: inteligencia de negocio, grandes volúmenes de datos, modelos predictivos, automatización de procesos y, en los últimos años, inteligencia artificial aplicada a la operación.</p>
+        <p>Mi trabajo consiste en traducir lo que una empresa quiere lograr en una ruta técnica y comercial que se pueda ejecutar: <b>qué se automatiza primero, qué se mide y cómo se sostiene en el tiempo</b>. Dirijo equipos y acompaño proyectos en México, Colombia y Perú.</p>
+        <p>Me interesa la tecnología que resuelve un problema de negocio concreto, no la que se presenta bien en una diapositiva.</p>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat rv"><span class="n" data-to="19" data-suffix="+">0</span><span class="l">Años de trayectoria</span></div>
+      <div class="stat rv"><span class="n" data-to="3">0</span><span class="l">Países con operación</span></div>
+      <div class="stat rv"><span class="n" data-to="6">0</span><span class="l">Capacidades de trabajo</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="especialidades" data-label="Especialidades">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">02</span><div><h2>En qué trabajo</h2>
+      <p class="sec-sub">Seis frentes que suelen ir juntos: el dato sin proceso no cambia nada, y el proceso sin dato no se puede mejorar.</p></div></div>
+    <div class="cards">
+      <div class="card rv"><span class="k">01</span><h3>Estrategia de datos</h3><p>Definir qué información importa, cómo se mide y cómo se convierte en una decisión que la dirección puede tomar sin discutir el dato.</p><span class="bar"></span></div>
+      <div class="card rv"><span class="k">02</span><h3>Analítica y modelos</h3><p>Inteligencia de negocio, analítica avanzada y modelos predictivos al servicio de la operación comercial, no del tablero.</p><span class="bar"></span></div>
+      <div class="card rv"><span class="k">03</span><h3>Automatización de procesos</h3><p>Retirar de la operación diaria el trabajo repetitivo, midiendo el tiempo que se recupera y lo que deja de fallar.</p><span class="bar"></span></div>
+      <div class="card rv"><span class="k">04</span><h3>Inteligencia artificial aplicada</h3><p>Casos de uso acotados, con retorno claro, que se integran a lo que la empresa ya tiene en vez de reemplazarlo.</p><span class="bar"></span></div>
+      <div class="card rv"><span class="k">05</span><h3>Atención y servicio</h3><p>Operaciones de atención al cliente y contacto multicanal, con la tecnología como soporte y no como fin.</p><span class="bar"></span></div>
+      <div class="card rv"><span class="k">06</span><h3>Dirección comercial</h3><p>Estructura de ventas, criterios de priorización y acompañamiento de equipos para crecer sin deteriorar la operación.</p><span class="bar"></span></div>
+    </div>
+  </div>
+</section>
+
+<section id="metodo" class="method" data-label="Método">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">03</span><div><h2>Cómo trabajo</h2>
+      <p class="sec-sub">El mismo orden en cada proyecto, sea de datos, de automatización o de inteligencia artificial.</p></div></div>
+    <div class="steps">
+      <div class="step rv"><span class="dot"></span><span class="sn">01</span><h3>Entender la operación</h3><p>Antes de proponer tecnología, ver cómo se trabaja hoy: dónde se pierde el tiempo, dónde se repite el trabajo y dónde se decide con información incompleta.</p></div>
+      <div class="step rv"><span class="dot"></span><span class="sn">02</span><h3>Priorizar por impacto</h3><p>Elegir el primer caso por su efecto en el negocio y por su facilidad de adopción, no por lo llamativo de la tecnología.</p></div>
+      <div class="step rv"><span class="dot"></span><span class="sn">03</span><h3>Implementar con el equipo</h3><p>Construir sobre lo que la empresa ya usa, con las personas que lo van a operar, para que el cambio quede instalado y no dependa de mí.</p></div>
+      <div class="step rv"><span class="dot"></span><span class="sn">04</span><h3>Medir y sostener</h3><p>Dejar indicadores que cualquiera pueda revisar: qué mejoró, cuánto y qué sigue pendiente.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="quote">
+  <div class="wrap">
+    <blockquote class="rv">La tecnología solo cuenta cuando <em>cambia lo que pasa el lunes</em> en la operación.</blockquote>
+    <p class="attr rv">Alejandro Mendoza Victorica</p>
+  </div>
+</div>
+
+<section id="trayectoria" data-label="Trayectoria">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">04</span><h2>Trayectoria</h2></div>
+    <div class="tl" id="tl">
+      <div class="tl-line" id="tlline"></div>
+      <div class="row rv"><div class="yr">2006 — hoy</div><div><h3>Dirección general</h3><p>Dirección de la operación en América Latina: estrategia, crecimiento comercial y desarrollo de las capacidades analíticas y de automatización de la organización.</p></div></div>
+      <div class="row rv"><div class="yr">2006 — 2017</div><div><h3>Dirección comercial</h3><p>Construcción y liderazgo de la fuerza de ventas de soluciones de analítica, datos e inteligencia de negocio para empresas.</p></div></div>
+      <div class="row rv"><div class="yr">2004 — 2008</div><div><h3>Formación</h3><p>Licenciatura, Tecnológico de Monterrey.</p></div></div>
+      <div class="row rv"><div class="yr">2020</div><div><h3>Credencial</h3><p>Certificación internacional en Ciencia de Datos y Analítica de Negocio.</p></div></div>
+    </div>
+    <div class="geo rv"><span class="tag">México</span><span class="tag">Colombia</span><span class="tag">Perú</span></div>
+  </div>
+</section>
+
+<section id="contacto" class="contact" data-label="Contacto">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">05</span><h2>Hablemos</h2></div>
+    <div class="body-grid">
+      <div></div>
+      <div class="prose rv">
+        <p>Si estás evaluando cómo ordenar tus datos, automatizar una parte de tu operación o llevar inteligencia artificial a un proceso concreto, escríbeme y lo vemos.</p>
+        <div class="actions">
+          <a class="btn btn-solid" href="https://www.linkedin.com/in/alejandro-mendoza-victorica-6a703213a/" target="_blank" rel="noopener"><span>Escríbeme por LinkedIn</span><span class="ar">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Alejandro Mendoza Victorica</span>
+    <span>Ciudad de México · México, Colombia y Perú</span>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !window.gsap) {
+    document.querySelectorAll('.rv').forEach(function(e){e.style.opacity=1;e.style.transform='none';});
+    return;
+  }
+  gsap.registerPlugin(ScrollTrigger);
+
+  var tl = gsap.timeline({defaults:{ease:'power4.out'}});
+  tl.from('#eyebrow',{opacity:0,y:14,duration:.8},.1)
+    .from('#eyebrow i',{scaleX:0,duration:.9,transformOrigin:'0 50%'},.1)
+    .from('h1 .ln > span',{yPercent:112,duration:1.15,stagger:.09},.15)
+    .from('#lead',{opacity:0,y:20,duration:.9},.58)
+    .from('#actions a',{opacity:0,y:16,duration:.75,stagger:.09},.75)
+    .from('#pw',{opacity:0,y:34,scale:.97,duration:1.2},.42)
+    .from('.scroll-cue',{opacity:0,duration:.8},1.1);
+
+  gsap.to('#prog',{scaleX:1,ease:'none',
+    scrollTrigger:{trigger:document.body,start:'top top',end:'bottom bottom',scrub:.3}});
+
+  document.querySelectorAll('.rv').forEach(function(el){
+    gsap.to(el,{opacity:1,y:0,duration:.95,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 90%',once:true}});
+  });
+
+  document.querySelectorAll('.stat .n').forEach(function(el){
+    var fin = parseFloat(el.dataset.to), suf = el.dataset.suffix || '', o = {v:0};
+    gsap.to(o,{v:fin,duration:1.7,ease:'power2.out',
+      scrollTrigger:{trigger:el,start:'top 88%',once:true},
+      onUpdate:function(){ el.textContent = Math.round(o.v) + suf; }});
+  });
+
+  var line = document.querySelector('#tlline');
+  if (line){
+    gsap.to(line,{height:'100%',ease:'none',
+      scrollTrigger:{trigger:'#tl',start:'top 76%',end:'bottom 74%',scrub:.5}});
+  }
+
+  gsap.to('#portrait img',{yPercent:-8,scale:1.06,ease:'none',
+    scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:.6}});
+
+  var idx = document.getElementById('sideIndex');
+  var secs = document.querySelectorAll('section[data-label]');
+  var btns = [];
+  secs.forEach(function(s){
+    var b = document.createElement('button');
+    b.innerHTML = '<b>'+s.dataset.label+'</b><i></i>';
+    b.addEventListener('click',function(){ s.scrollIntoView({behavior:'smooth'}); });
+    idx.appendChild(b); btns.push(b);
+  });
+  function mark(i){ btns.forEach(function(b,j){ b.classList.toggle('on', j===i); }); }
+  secs.forEach(function(s,i){
+    ScrollTrigger.create({trigger:s,start:'top 46%',end:'bottom 46%',
+      onEnter:function(){mark(i);},onEnterBack:function(){mark(i);}});
+  });
+
+  ScrollTrigger.create({start:'top -60',
+    onEnter:function(){document.getElementById('hdr').classList.add('solid');},
+    onLeaveBack:function(){document.getElementById('hdr').classList.remove('solid');}});
+
+  var spot = document.getElementById('spot'), hero = document.getElementById('hero');
+  if (window.matchMedia('(pointer:fine)').matches){
+    hero.addEventListener('pointermove',function(e){
+      var r = hero.getBoundingClientRect();
+      gsap.to(spot,{left:e.clientX-r.left, top:e.clientY-r.top, opacity:1, duration:.9, ease:'power2.out'});
+    });
+    hero.addEventListener('pointerleave',function(){ gsap.to(spot,{opacity:0,duration:.7}); });
+
+    var pw = document.getElementById('pw');
+    pw.addEventListener('pointermove',function(e){
+      var r = pw.getBoundingClientRect();
+      var rx = ((e.clientY-r.top)/r.height-.5)*-6, ry = ((e.clientX-r.left)/r.width-.5)*6;
+      gsap.to('#portrait',{rotateX:rx,rotateY:ry,transformPerspective:900,duration:.6,ease:'power2.out'});
+    });
+    pw.addEventListener('pointerleave',function(){
+      gsap.to('#portrait',{rotateX:0,rotateY:0,duration:.8,ease:'power3.out'});
+    });
+  }
+})();
+</script>
+</body>
+</html>
